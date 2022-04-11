@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+</head>
+
+<body>
+<h2>Все пользователи:</h2>
+<br>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Дата Рождения</th>
+        <th>Адрес</th>
+        <th>О себе</th>
+        <th>Пароль</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:utext="${user.getId()}"></td>
+        <td th:utext="${user.getUsername()}"></td>
+        <td th:utext="${user.getLastName()}"></td>
+        <td th:utext="${user.getDateOfBirth()}"></td>
+        <td th:utext="${user.getAdress()}"></td>
+        <td th:utext="${user.getUserInfo()}"></td>
+        <td th:utext="${user.getPassword()}"></td>
+        <td>
+            <form  th:method="GET"
+                  th:action="@{/users/edit/{id}(id=${user.getId()})}">
+                <input type="submit" value="Edit">
+            </form>
+        </td>
+        <td>
+            <form  th:method="DELETE"
+                  th:action="@{/users/{id}(id=${user.getId()})}">
+                <input type="submit" value="Delete">
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+
+<form>
+    <a th:href="@{/users/new}">Add User</a>
+</form>
+
+<br><br>
+<form th:method="POST" th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
+</form>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edit user</title>
+</head>
+<body>
+<form action="#" th:action="@{/users/edited/{id}(id=${user.getId()})}" th:object="${user}" method="post">
+    <label for="username">Введите имя: </label>
+    <input type="text" th:field="*{username}" id="username"/>
+    <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error name</div>
+    <br/>
+    <br/>
+    <label for="lastname">Введите фамилию: </label>
+    <input type="text" th:field="*{lastName}" id="lastname"/>
+    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Error name</div>
+    <br/>
+    <br/>
+    <label for="lastname">Введите дату рождения в формате дд.мм.гг : </label>
+    <input type="text" th:field="*{dateOfBirth}" id="dateOfBirth"/>
+    <div th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Error name</div>
+    <br/>
+    <br>
+    <label for="lastname">Введите ваш адрес проживания: </label>
+    <input type="text" th:field="*{adress}" id="adress"/>
+    <div th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}">Error name</div>
+    <br/>
+    <br>
+    <label for="lastname">Расскажите о себе: </label>
+    <input type="text" th:field="*{userInfo}" id="userInfo"/>
+    <div th:if="${#fields.hasErrors('userInfo')}" th:errors="*{userInfo}">Error name</div>
+    <br/>
+    <br>
+    <label for="password">Введите пароль: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error name</div>
+    <br/>
+    <br/>
+    <br/>
+    <input type="submit" value="Изменить"/>
+</form>
+
+
+</body>
+</html>
